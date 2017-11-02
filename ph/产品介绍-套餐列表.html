@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>套餐列表</title>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-refresh.css">
+    <script type="text/javascript" src="js/jquery1.9.1.js"></script>
+    <script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
+    <script type="text/javascript" src="js/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="js/jquery-refresh.js"></script>
+    <script type="text/javascript" src="js/animate.js"></script>
+</head>
+<body>
+
+<!-- 遮罩层 -->
+<div class="shade"></div>
+
+<!-- header -->
+<header class="header">
+    <div class="header_con">
+        <div class="clear con">
+            <a href="index.html" class="fl">
+                <img class="header_logo" src="images/logo.png">
+            </a>
+            <img class="header_btn fr" src="images/menuBtn1.png" type="0">
+        </div>
+    </div>
+    <nav>
+        <ul class="header_menu hide text-c">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="公司介绍.html">公司介绍</a></li>
+            <li class="on"><a href="产品介绍.html">产品介绍</a></li>
+            <li><a href="报告查询.html">报告查询</a></li>
+            <li><a href="在线预约.html">在线预约</a></li>
+            <li><a href="联系我们.html">联系我们</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="header_box"></section>
+
+<section class="t_header text-c">
+    <div class="con">
+        <a href="javascript:history.back(-1)" class="back">返回</a>
+        <p class="tit">团检套餐</p>
+    </div>
+</section>
+
+<section class="t_header_box"></section>
+
+<!-- 内容区 -->
+
+<section class="package_list_box">
+    <div class="package_list_con pull_up">
+        <ul class="list">
+            <li>
+                <a href="产品详情.html">
+                    <div class="con clear">
+                        <div class="img fl clear_space">
+                            <img src="images/pro_pic2.png">
+                        </div>
+                        <div class="info fr">
+                            <p class="tit">团检套餐A</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn" href="在线预约.html">立即预约</a>
+            </li>
+            <li>
+                <a href="产品详情.html">
+                    <div class="con clear">
+                        <div class="img fl clear_space">
+                            <img src="images/pro_pic2.png">
+                        </div>
+                        <div class="info fr">
+                            <p class="tit">团检套餐A</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn" href="在线预约.html">立即预约</a>
+            </li>
+            <li>
+                <a href="产品详情.html">
+                    <div class="con clear">
+                        <div class="img fl clear_space">
+                            <img src="images/pro_pic2.png">
+                        </div>
+                        <div class="info fr">
+                            <p class="tit">团检套餐A</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn" href="在线预约.html">立即预约</a>
+            </li>
+            <li>
+                <a href="产品详情.html">
+                    <div class="con clear">
+                        <div class="img fl clear_space">
+                            <img src="images/pro_pic2.png">
+                        </div>
+                        <div class="info fr">
+                            <p class="tit">团检套餐A</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn" href="在线预约.html">立即预约</a>
+            </li>
+            <li>
+                <a href="产品详情.html">
+                    <div class="con clear">
+                        <div class="img fl clear_space">
+                            <img src="images/pro_pic2.png">
+                        </div>
+                        <div class="info fr">
+                            <p class="tit">团检套餐A</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn" href="在线预约.html">立即预约</a>
+            </li>
+        </ul>
+        <div class="pull_update text-c">上拉加载更多</div>
+    </div>
+</section>
+
+<script>
+    $(function(){
+        /* 上拉加载更多 */
+        var re = new refresh($('.pull_up'),'up',60);
+        var a=0;
+        pull_action_con = function(){
+            $('.pull_update').text('加载中');
+            console.log(++a);
+            setTimeout(function(){
+                //$('.pull_update').hide();
+                $('.pull_update').text('已显示全部内容');
+            },500);
+            $('.pull_up').css('transform','translateY(0)');
+        }
+    })
+</script>
+
+<script type="text/javascript" src="js/layout.js"></script>
+</body>
+</html>

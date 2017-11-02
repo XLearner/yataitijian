@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>在线预约</title>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/mobiscroll.custom-3.0.0-beta2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-refresh.css">
+    <script type="text/javascript" src="js/jquery1.9.1.js"></script>
+    <script type="text/javascript" src="js/mobiscroll.custom-3.0.0-beta2.min.js"></script>
+    <script type="text/javascript" src="js/jQuery.formcheck.js"></script>
+    <script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
+    <script type="text/javascript" src="js/layer_mobile/layer.js"></script>
+    <script type="text/javascript" src="js/jquery-refresh.js"></script>
+    <script type="text/javascript" src="js/animate.js"></script>
+</head>
+<body>
+
+<!-- 遮罩层 -->
+<div class="shade"></div>
+
+<!-- header -->
+<header class="header">
+    <div class="header_con">
+        <div class="clear con">
+            <a href="index.html" class="fl">
+                <img class="header_logo" src="images/logo.png">
+            </a>
+            <img class="header_btn fr" src="images/menuBtn1.png" type="0">
+        </div>
+    </div>
+    <nav>
+        <ul class="header_menu hide text-c">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="公司介绍.html">公司介绍</a></li>
+            <li><a href="产品介绍.html">产品介绍</a></li>
+            <li><a href="报告查询.html">报告查询</a></li>
+            <li class="on"><a href="在线预约.html">在线预约</a></li>
+            <li><a href="联系我们.html">联系我们</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="header_box"></section>
+
+
+<!-- 内容区 -->
+
+<!-- 在线预约 -->
+<section class="online_box o_titBox">
+    <div class="titBox text-c">
+        <p class="tit">ONLINE BOOKING</p>
+        <p class="stit c_yellow">在线预约</p>
+    </div>
+    <div class="t_img clear_space">
+        <img src="images/online.jpg">
+    </div>
+    <div class="online_con">
+        <div class="con">
+            <ul>
+                <li>
+                    <p class="label">姓名</p>
+                    <input type="text" name="name" class="input" placeholder="请输入真实姓名">
+                </li>
+                <li>
+                    <p class="label">性别</p>
+                    <select class="input" name="sex">
+                        <option>男</option>
+                        <option>女</option>
+                    </select>
+                </li>
+                <li>
+                    <p class="label">身份证号</p>
+                    <input type="text" name="idCard" class="input" placeholder="请输入真实身份证号">
+                </li>
+                <li>
+                    <p class="label">联系方式</p>
+                    <input type="number" name="phone" class="input" placeholder="请输入手机号码">
+                </li>
+                <li>
+                    <p class="label">预约日期</p>
+                    <input type="text" name="date" class="input" placeholder="请选择日期" readonly="readonly">
+                </li>
+                <li>
+                    <p class="label">体检人数</p>
+                    <select class="input" name="peopleNum">
+                        <option>1人</option>
+                        <option>2人</option>
+                        <option>3人</option>
+                        <option>4人</option>
+                        <option>5人及以上</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 底部按钮 -->
+<section class="online_bottom_btn">
+    <div class="bottom_btn_box">
+        <a href="javascript:;" class="bottom_btn submit">提交</a>
+    </div>
+</section>
+
+<!-- 弹窗内容 -->
+<section class="dialog">
+    <div class="dialog_con">
+        <p>提交成功！</p>
+        <p>我们会尽快与您联系确认，谢谢</p>
+    </div>
+</section>
+
+<script>
+    
+    $(function(){
+
+        /* 日期时间选择器 */
+        $('[name="date"]').mobiscroll().date({
+            theme: 'ios',
+            lang: "zh",
+            dateFormat: 'yyyy-mm-dd',
+            min: new Date(),
+            cancelText: '取消',
+            setText: '确定'
+        });
+
+        // 信息验证
+        $('.submit').on('click', function(){
+            if(!$('[name="name"]').check_name()){
+                layer.open({
+                    content: '请输入正确的名字',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+            }else if(!$('[name="idCard"]').check_idcard()){
+                layer.open({
+                    content: '请输入正确的身份证号',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+            }else if(!$('[name="phone"]').check_phone()){
+                layer.open({
+                    content: '请输入正确的手机号码',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+            }else if($('[name="date"]').val() == ""){
+                layer.open({
+                    content: '请选择日期',
+                    skin: 'msg',
+                    time: 2 //2秒后自动关闭
+                });
+            }else{
+                layer.open({
+                    content: $('.dialog').html(),
+                    btn: ['确定'],
+                    yes: function(index){
+                        layer.close(index);
+                    }
+                });
+            }
+                
+        })
+    })
+</script>
+
+<script type="text/javascript" src="js/layout.js"></script>
+</body>
+</html>

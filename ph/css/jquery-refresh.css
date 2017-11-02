@@ -1,0 +1,22 @@
+.pull_up,.pull_to{position: relative;}
+
+.pull_update{
+	color: #999;
+	display: none;
+	font-size: 14px;
+	line-height: 40px;
+	position: absolute;
+	left: 0;
+	text-align: center;
+	width: 100%;
+}
+
+.pull_up .pull_update{
+	top: 100%;
+}
+
+.pull_to .pull_update{
+	bottom: 100%;
+}
+
+
